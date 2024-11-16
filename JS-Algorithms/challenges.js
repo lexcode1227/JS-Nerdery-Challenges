@@ -98,9 +98,9 @@ The last 3 digits for the sum of powers from 1 to 10 is "317"
 ***** */
 
 const ownPower = (number, lastDigits) => {
-  let total = 0;
+  let total = BigInt(0);
   while (number > 0) {
-    const exponent = number ** number
+    const exponent = BigInt(number) ** BigInt(number)
     total+= exponent
     number--;
   }
