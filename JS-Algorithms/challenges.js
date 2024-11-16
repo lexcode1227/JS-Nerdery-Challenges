@@ -57,18 +57,11 @@ const circularArray = (index) => {
   if (index <= 0) {
     return console.log("The function only accepts positive numbers");
   } else {
-    const newCountryNames = [];
-    for (let i = 0; i < COUNTRY_NAMES.length; i++) {
-      const element = COUNTRY_NAMES[i];
-      const elementIndex = COUNTRY_NAMES.findIndex(e => e === element);
-      if (elementIndex === index) {
-        const indexArray = COUNTRY_NAMES.slice(elementIndex, COUNTRY_NAMES.length);
-        newCountryNames.push(indexArray);
-      }
-    }
-    const restCountriesArray = COUNTRY_NAMES.slice(0,index);
-    newCountryNames.push(restCountriesArray);
-    const result = newCountryNames.flatMap(item => item);
+    const biggerIndex = index % COUNTRY_NAMES.length;
+    
+    const countryNamesSelected = COUNTRY_NAMES.slice(biggerIndex);
+    const restCountryNames = COUNTRY_NAMES.slice(0, biggerIndex);
+    const result = countryNamesSelected.concat(restCountryNames);
     return result;
   }};
 
@@ -138,11 +131,8 @@ const digitSum = (n) => {
   }
 
   const factorialSum = factorialNumbers.reduce( (acc, cc) => BigInt(acc) * BigInt(cc));
-  
-  const factorialNumbersToArr = factorialSum.toString().split("");
-
-  const arrayNumbers = factorialNumbersToArr.map( item => Number(item));
-  const factorialNumberSum = arrayNumbers.reduce( (acc, cc) => acc + cc);
+  const factorialNumbersToArr = factorialSum.toString().split("").map( item => Number(item));
+  const factorialNumberSum = factorialNumbersToArr.reduce( (acc, cc) => acc + cc);
   return factorialNumberSum
 };
 
