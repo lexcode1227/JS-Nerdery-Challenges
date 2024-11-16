@@ -25,7 +25,7 @@ const readableTime = (seconds) => {
     let secs = (seconds % divisor);
     secs = ( secs > 10 ) ? secs : `0${secs}`
     const time = `${hours}:${minutes}:${secs}`
-    return time
+    return time;
   }
 };
 
@@ -59,16 +59,16 @@ const circularArray = (index) => {
   } else {
     const newCountryNames = [];
     for (let i = 0; i < COUNTRY_NAMES.length; i++) {
-      const element = COUNTRY_NAMES[i]
-      const elementIndex = COUNTRY_NAMES.findIndex(e => e === element)
+      const element = COUNTRY_NAMES[i];
+      const elementIndex = COUNTRY_NAMES.findIndex(e => e === element);
       if (elementIndex === index) {
-        const indexArray = COUNTRY_NAMES.slice(elementIndex, COUNTRY_NAMES.length)
-        newCountryNames.push(indexArray)
+        const indexArray = COUNTRY_NAMES.slice(elementIndex, COUNTRY_NAMES.length);
+        newCountryNames.push(indexArray);
       }
     }
-    const restCountriesArray = COUNTRY_NAMES.slice(0,index)
-    newCountryNames.push(restCountriesArray)
-    const result = newCountryNames.flatMap(item => item)
+    const restCountriesArray = COUNTRY_NAMES.slice(0,index);
+    newCountryNames.push(restCountriesArray);
+    const result = newCountryNames.flatMap(item => item);
     return result;
   }};
 
@@ -100,12 +100,12 @@ The last 3 digits for the sum of powers from 1 to 10 is "317"
 const ownPower = (number, lastDigits) => {
   let total = BigInt(0);
   while (number > 0) {
-    const exponent = BigInt(number) ** BigInt(number)
-    total+= exponent
+    const exponent = BigInt(number) ** BigInt(number);
+    total+= exponent;
     number--;
   }
-  const result = total.toString().slice(-lastDigits)
-  return result
+  const result = total.toString().slice(-lastDigits);
+  return result;
 };
 
 ownPower(10, 3);
@@ -130,19 +130,19 @@ Since 10! === 3628800 and you sum 3 + 6 + 2 + 8 + 8 + 0 + 0
 ***** */
 
 const digitSum = (n) => {
-  const factorialNumbers = []
+  const factorialNumbers = [];
 
   while (n > 0) {
-    factorialNumbers.push(n)
+    factorialNumbers.push(n);
     n--;
   }
 
-  const factorialSum = factorialNumbers.reduce( (acc, cc) => BigInt(acc) * BigInt(cc))
+  const factorialSum = factorialNumbers.reduce( (acc, cc) => BigInt(acc) * BigInt(cc));
   
-  const factorialNumbersToArr = factorialSum.toString().split("")
+  const factorialNumbersToArr = factorialSum.toString().split("");
 
-  const arrayNumbers = factorialNumbersToArr.map( item => Number(item))
-  const factorialNumberSum = arrayNumbers.reduce( (acc, cc) => acc + cc)
+  const arrayNumbers = factorialNumbersToArr.map( item => Number(item));
+  const factorialNumberSum = arrayNumbers.reduce( (acc, cc) => acc + cc);
   return factorialNumberSum
 };
 
