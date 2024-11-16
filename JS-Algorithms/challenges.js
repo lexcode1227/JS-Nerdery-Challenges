@@ -14,7 +14,7 @@ Invoking "readableTime(3690)" should return "01:01:30" (HH:MM:SS)
 
 const readableTime = (seconds) => {
   const divisor = 60;
-  let date;
+
   if (seconds <= 0) {
     return console.log("The function only accepts positive numbers");
   } else {
@@ -22,10 +22,10 @@ const readableTime = (seconds) => {
     hours = ( hours > 10 ) ? hours : `0${hours}`
     let minutes = Math.floor((seconds / divisor) % divisor);
     minutes = ( minutes > 10 ) ? minutes : `0${minutes}`
-    let second = (seconds % divisor);
-    second = ( second > 10 ) ? second : `0${second}`
-    date = `${hours}:${minutes}:${second}`
-    return date
+    let secs = (seconds % divisor);
+    secs = ( secs > 10 ) ? secs : `0${secs}`
+    const time = `${hours}:${minutes}:${secs}`
+    return time
   }
 };
 
@@ -57,18 +57,18 @@ const circularArray = (index) => {
   if (index <= 0) {
     return console.log("The function only accepts positive numbers");
   } else {
-    const newCountryArr = [];
+    const newCountryNames = [];
     for (let i = 0; i < COUNTRY_NAMES.length; i++) {
       const element = COUNTRY_NAMES[i]
       const elementIndex = COUNTRY_NAMES.findIndex(e => e === element)
       if (elementIndex === index) {
-        const arr = COUNTRY_NAMES.slice(elementIndex, COUNTRY_NAMES.length)
-        newCountryArr.push(arr)
+        const indexArray = COUNTRY_NAMES.slice(elementIndex, COUNTRY_NAMES.length)
+        newCountryNames.push(indexArray)
       }
     }
-    const arr2 = COUNTRY_NAMES.slice(0,index)
-    newCountryArr.push(arr2)
-    const result = newCountryArr.flatMap(item => item)
+    const restCountriesArray = COUNTRY_NAMES.slice(0,index)
+    newCountryNames.push(restCountriesArray)
+    const result = newCountryNames.flatMap(item => item)
     return result;
   }};
 
@@ -104,8 +104,8 @@ const ownPower = (number, lastDigits) => {
     total+= exponent
     number--;
   }
-  const res = total.toString().slice(-lastDigits)
-  return res
+  const result = total.toString().slice(-lastDigits)
+  return result
 };
 
 ownPower(10, 3);
@@ -130,21 +130,20 @@ Since 10! === 3628800 and you sum 3 + 6 + 2 + 8 + 8 + 0 + 0
 ***** */
 
 const digitSum = (n) => {
-  let score = n;
-  const arr = []
+  const factorialNumbers = []
 
-  while (score > 0) {
-    arr.push(score)
-    score--;
+  while (n > 0) {
+    factorialNumbers.push(n)
+    n--;
   }
 
-  const factorial = arr.reduce( (acc, cc) => BigInt(acc) * BigInt(cc))
+  const factorialSum = factorialNumbers.reduce( (acc, cc) => BigInt(acc) * BigInt(cc))
   
-  const arrayRes = factorial.toString().split("")
+  const factorialNumbersToArr = factorialSum.toString().split("")
 
-  const arrayNumbers = arrayRes.map( item => Number(item))
-  const factorialSum = arrayNumbers.reduce( (acc, cc) => acc + cc)
-  return factorialSum
+  const arrayNumbers = factorialNumbersToArr.map( item => Number(item))
+  const factorialNumberSum = arrayNumbers.reduce( (acc, cc) => acc + cc)
+  return factorialNumberSum
 };
 
 digitSum(10);
